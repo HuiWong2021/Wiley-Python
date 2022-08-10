@@ -1,0 +1,170 @@
+Step 1: Normalize the Letter Casing
+Because all content in Python is case-sensitive, we start by normalizing the case so that all characters are in the same case.
+
+Here, we start with a string of text taken from E. Abbott's 1884 novel, Flatland. Convert the existing text to lowercase characters, stored in a variable named s_lower.
+
+The output should look like:
+imagine a vast sheet of paper on which straight lines, triangles, squares, pentagons, hexagons, and other figures, instead of remaining fixed in their places, move freely about, on or in the surface, but without the power of rising above or sinking below it, very much like shadows — only hard and with luminous edges — and you will then have a pretty correct notion of my country and countrymen. alas, a few years ago, i should have said "my universe": but now my mind has been opened to higher views of things.
+
+s = """Imagine a vast sheet of paper on which straight Lines, Triangles, Squares, Pentagons, Hexagons, and other figures, instead of remaining fixed in their places, move freely about, on or in the surface, but without the power of rising above or sinking below it, very much like shadows - only hard and with luminous edges - and you will then have a pretty correct notion of my country and countrymen. Alas, a few years ago, I should have said "my universe": but now my mind has been opened to higher views of things."""
+#do not change any code above this line
+s_lower=s.lower()
+print(s_lower)
+
+Step 2
+Using the str.split() method, divide the s_lower string into separate words. The output should be a list of strings.
+Store the results in a list called words.
+Printing the list should look like:
+['imagine', 'a', 'vast', 'sheet', 'of', 'paper', 'on', 'which', 'straight', 'lines,', 'triangles,', 'squares,', 'pentagons,', 'hexagons,', 'and', 'other', 'figures,', 'instead', 'of', 'remaining', 'fixed', 'in', 'their', 'places,', 'move', 'freely', 'about,', 'on', 'or', 'in', 'the', 'surface,', 'but', 'without', 'the', 'power', 'of', 'rising', 'above', 'or', 'sinking', 'below', 'it,', 'very', 'much', 'like', 'shadows', '—', 'only', 'hard', 'and', 'with', 'luminous', 'edges', '—', 'and', 'you', 'will', 'then', 'have', 'a', 'pretty', 'correct', 'notion', 'of', 'my', 'country', 'and', 'countrymen.', 'alas,', 'a', 'few', 'years', 'ago,', 'i', 'should', 'have', 'said', '"my', 'universe":', 'but', 'now', 'my', 'mind', 'has', 'been', 'opened', 'to', 'higher', 'views', 'of', 'things.']
+
+words = list() #do not delete. this list must contain the list of words. 
+for word in s_lower.split():
+  words.append(word)
+print(words) #do not delete 
+
+
+Step 3
+Use the len method to return the number of words in the string.
+At this point, with the initial string, the count should be 92 for the original string.
+len(words)
+
+Step 4
+Use a set to compute the number of distinct words in the string.
+At this point, with the initial string, the count of distinct words should be 75.
+
+words_set=set(words)
+len(words_set)
+  
+Step 5
+The next step is to compute the frequency of the distinct words in our string.
+For practice, start with the list saved as w in the example code below. Note that some of the words in this list appear more than once, and we need a way to identify distinct words and count their frequency.
+To this end, the script should perform the following steps:
+
+Create an empty dictionary.
+We use a dictionary here so that we can create key/value pairs where the key is the word itself and the value represents the number of times that word appears in the original list.
+Create a loop that does the following:
+It looks at each word in the original list and compares that word to existing keys in the dictionary.
+If the word does not match a key in the dictionary, it adds the item to the dictionary as a new key, with the value 1.
+If the word already exists as a key in the dictionary, the value for that key increments by 1 to count the number of occurrences of the word.
+The output for the original starting list should look like:
+{'haythem': 2, 'is': 1, 'eating': 1, 'tacos.': 1, 'loves': 1, 'tacos': 1, '': 1, ':': 1}
+In the results, you will notice that "tacos." is distinct from "tacos" because of the period. Also, both the colon item and the empty item appear in the results. We will ignore punctuation for now, and fix those problems in the next step.
+#we define w as a list of words 
+w = ["haythem","is","eating","tacos.","haythem","loves","tacos","",":"]
+ #we define an empty dictionary that will hold the token/frequency key-value pair
+#  key:word, value:int that corresponds to the frequency of occurrence
+freq_occur = dict()
+
+ 
+print(freq_occur)
+Using the pattern in the code above, compute the frequency count for each word in the original string s_lower.
+
+The dictionary should look like this when finished:
+
+{'imagine': 1, 'a': 3, 'vast': 1, 'sheet': 1, 'of': 5, 'paper': 1, 'on': 2, 'which': 1, 'straight': 1, 'lines,': 1, 'triangles,': 1, 'squares,': 1, 'pentagons,': 1, 'hexagons,': 1, 'and': 4, 'other': 1, 'figures,': 1, 'instead': 1, 'remaining': 1, 'fixed': 1, 'in': 2, 'their': 1, 'places,': 1, 'move': 1, 'freely': 1, 'about,': 1, 'or': 2, 'the': 2, 'surface,': 1, 'but': 2, 'without': 1, 'power': 1, 'rising': 1, 'above': 1, 'sinking': 1, 'below': 1, 'it,': 1, 'very': 1, 'much': 1, 'like': 1, 'shadows': 1, '-': 2, 'only': 1, 'hard': 1, 'with': 1, 'luminous': 1, 'edges': 1, 'you': 1, 'will': 1, 'then': 1, 'have': 2, 'pretty': 1, 'correct': 1, 'notion': 1, 'my': 2, 'country': 1, 'countrymen.': 1, 'alas,': 1, 'few': 1, 'years': 1, 'ago,': 1, 'i': 1, 'should': 1, 'said': 1, '"my': 1, 'universe":': 1, 'now': 1, 'mind': 1, 'has': 1, 'been': 1, 'opened': 1, 'to': 1, 'higher': 1, 'views': 1, 'things.': 1}
+
+word_freq = dict()
+for item in words:
+  if (item in word_freq):
+    word_freq[item] += 1
+  else:
+    word_freq[item] = 1
+print(word_freq)
+
+Step 6: Remove Punctuation Marks
+To fix the problems caused by punctuation, we need to remove the punctuation marks from the items in the list.
+Again, as a practice activity, we will start with the same list w from the previous exercise. The existing code performs the following steps:
+We import the Python string module, which includes all punctuation characters.
+We generate a list of punctuation characters from string.punctuation and print the list to verify that it includes the characters we want to exclude from our results.
+We define the list we want to start with.
+We create a new empty w_clean list that will hold the words after we have removed punctuation from each item in w.
+Complete this script so that it looks at each item in w and performs the following tasks:
+
+If the item is empty, ignore it.
+If the item includes only a punctuation mark, ignore it.
+If the item includes a punctuation mark as the first character or as the last character, remove that character from the word and add the cleaned word to w_clean.
+If it does not include punctuation, add it to the list w_clean as a separate token.
+The final version of w_clean should include seven items:
+['haythem', 'is', 'eating', 'tacos', 'haythem', 'loves', 'tacos']
+
+import string #import the string module 
+#use the built-in string.punctuation method to create a list of all punctuation marks
+punctuation_list =  list(string.punctuation)
+#display the punctuation_list
+print(punctuation_list)
+ 
+w = ["haythem!","is","eating","tacos.",".haythem","loves","tacos","",":"]
+w_clean = list()
+#do not change the code above this line.
+
+import re
+for word in w:
+    for p in punctuation_list:
+      if p in word:
+        word=re.sub(r'^\W*','',word)
+        word=re.sub(r'\W*$','',word)
+    w_clean.append(word)
+      
+print(w_clean)
+print(len(w_clean))
+
+Use the same pattern to remove the punctuation from the initial s string and count the number of times each word appears in that string.
+
+The output should include each distinct word, regardless of case or punctuation, along with the number of times each word appears. Also display the number of distinct words in the string.
+
+The output for the original string should look like:
+
+['imagine', 'a', 'vast', 'sheet', 'of', 'paper', 'on', 'which', 'straight', 'lines', 'triangles', 'squares', 'pentagons', 'hexagons', 'and', 'other', 'figures', 'instead', 'of', 'remaining', 'fixed', 'in', 'their', 'places', 'move', 'freely', 'about', 'on', 'or', 'in', 'the', 'surface', 'but', 'without', 'the', 'power', 'of', 'rising', 'above', 'or', 'sinking', 'below', 'it', 'very', 'much', 'like', 'shadows', 'only', 'hard', 'and', 'with', 'luminous', 'edges', 'and', 'you', 'will', 'then', 'have', 'a', 'pretty', 'correct', 'notion', 'of', 'my', 'country', 'and', 'countrymen', 'alas', 'a', 'few', 'years', 'ago', 'i', 'should', 'have', 'said', 'my', 'universe"', 'but', 'now', 'my', 'mind', 'has', 'been', 'opened', 'to', 'higher', 'views', 'of', 'things']
+90
+Challenge: Note that in the output above, universe" still includes a quotation mark. Why? How can you fix it?
+
+The solution you come up with for this challenge should not remove punctuation marks inside words, like can't or well-known.
+
+import string #import the string module 
+#use the string.punctuation built-in python to create a list of all punctuations
+punctuation_list =  list(string.punctuation)  #do not delete this
+print(words)
+w_clean = list()
+
+import re
+for word in words:
+    for p in punctuation_list:
+      if p in word:
+        word=re.sub(r'^\W*','',word)
+        word=re.sub(r'\W*$','',word)
+    w_clean.append(word)
+      
+print(w_clean)
+print(len(w_clean))
+
+Step 7
+Finally, create a single script that performs all of the following operations on the original 's' string.
+
+Convert the string to lowercase characters.
+Split the lowercase string into individual words.
+Remove the punctuation from the lowercase words. Assume that all punctuation is either the first character or the last character of each item in the list.
+Perform a count analysis on the words without punctuation characters.
+Display the dictionary with the word counts and the number of distinct words in the original string.
+
+s_lower=s.lower()
+print(s_lower)
+
+words=s_lower.split()
+print(words)
+
+import re
+no_punct=[]
+for word in words:
+  word=re.sub(r'^\W*|\W*$','',word)
+  if len(word)>=1:
+    no_punct.append(word)
+print(no_punct)
+
+freq = {}
+for item in no_punct:
+  if item in freq:
+    freq[item] += 1
+  else:
+    freq[item] = 1
+print(f"{freq}\nnumber of distinct words: {len(freq)}")
+
