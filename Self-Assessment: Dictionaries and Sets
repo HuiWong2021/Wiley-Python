@@ -1,0 +1,43 @@
+Create a program that does the following:
+
+Define a set with at least five elements.
+Ask the user for a value.
+Ask the user for an operation ("add" or "remove").
+If the operation is "remove":
+If the value exists in the set, remove the value from the set and display the updated set to the user.
+If the value does not exist in the set, display a user-friendly error message.
+If the operation is "add":
+If the value exists in the set, display a user-friendly error message.
+If the value does not exist in the set, add the value to the set and display the updated set to the user.
+Repeat until the user enters "quit."
+When the user enters "quit," display the original set, the final version of the updated set, and the difference between the two sets.
+
+#Karly 2022-08-10
+set = {"donut", "orange", "banana", "pork", "durian"}
+updated_set = set()
+value = input("Enter a value: ").lower()
+add_or_remove = input('Enter "add" or "remove" to add/remove an item (enter "quit" when you are done!): ').lower()
+while add_or_remove !="quit":
+    if add_or_remove == "add":
+        if value in updated_set:
+            print("Oops, value already exists.")
+        else:
+            updated_set.add(value)
+    if command == "remove":
+        if value in updated_set:
+            updated_set.remove(value)
+        else:
+            print("Opps, value does not exist.")
+    value = input("Enter a value: ").lower()
+    add_or_remove = input('Enter "add" or "remove" to add/remove an item (enter "quit" when you are done!): ').lower()
+
+print("Orignial set: ",set)
+print("Updated set: ", updated_set)
+difference={}
+for i in set:
+    if i not in updated_set:
+        difference.add(i)
+for i in updated_set:
+    if i not in set:
+        difference.add(i)
+print(f"Difference: {difference}")
