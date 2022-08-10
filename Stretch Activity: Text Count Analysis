@@ -1,0 +1,42 @@
+Once you have completed the script for this module's assignment and the script works as expected to count distinct words in a string, try the following stretch activities:
+
+Set up the script to allow the user to enter their own text at runtime and perform the operations on the user input.
+Prompt the user for a word and return that word's frequency in a selected string.
+Sort the items in the dictionary alphabetically.
+Sort the items in the dictionary from the highest frequency to the lowest frequency (or vice versa).
+You may need to search for examples on how to perform these activities in Python.
+
+#Karly 2022-08-10
+import string
+text = input("Enter a text: ").lower()
+words = text.split()
+w_clean = list()
+punctuation_list = list(string.punctuation)
+
+for word in words:
+    clean = word
+    if len(clean) <= 1:
+        w_clean.append(clean)
+        continue
+    for p in punctuation_list:
+        if p in clean:
+            clean = clean.replace(p,"")
+    w_clean.append(clean)
+
+freq = {}
+for word in w_clean:
+    if word not in freq:
+        freq[word] = 1
+    else:
+        freq[word] += 1
+
+word_frequency = input("Enter a word: ")
+print(f"{word_frequency} occurs {freq[word_frequency]} times")
+
+alphabet = dict(sorted(freq.items(), key = lambda item: item[0]))
+ascend = dict(sorted(freq.items(), key=lambda item: item[1]))
+descend = dict(sorted(freq.items(), key=lambda item: item[1], reverse=True))
+
+print(alphabet)
+print(ascend)
+print(descend)
