@@ -1,0 +1,53 @@
+A hook is functionality provided for users to have their own code called under certain circumstances. 
+That code can augment or replace the current code.
+“hook” is used for two kinds of files:
+A runtime hook helps the bootloader to launch an app. 
+Other hooks run while an app is being analyzed. They help the Analysis phase find needed files.
+
+
+
+Class and object:
+Almost everything in Python is an object, with its properties and methods.
+A Class is like an object constructor, or a "blueprint" for creating objects.
+
+Valid attribute names are all the names that were in the class’s namespace when the class object was created.
+Class objects support two kinds of operations: attribute references and instantiation.
+Attribute references use the standard syntax used for all attribute references in Python: obj.name. 
+Classes provide a means of bundling data and functionality together. Creating a new class creates a new type of object, allowing new instances of that type to be made.
+example:
+class MyClass:
+    """A simple example class"""
+    i = 12345
+
+    def f(self):
+        return 'hello world'
+
+MyClass.i and MyClass.f are valid attribute references, returning an integer and a function object, respectively. 
+Class attributes can also be assigned to, so you can change the value of MyClass.i by assignment. __doc__ is also a valid attribute, 
+returning the docstring belonging to the class: "A simple example class".
+
+
+All classes have a function called __init__(), which is always executed when the class is being initiated.
+Use the __init__() function to assign values to object properties, or other operations that are necessary to do when the object is being created:
+class Person:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+p1 = Person("John", 36)
+
+print(p1.name)
+print(p1.age)
+
+the self parameter is a reference to the current instance of the class, and is used to access variables that belongs to the class.
+It does not have to be named self , you can call it whatever you like, but it has to be the first parameter of any function in the class:
+class Person:
+  def __init__(mysillyobject, name, age):
+    mysillyobject.name = name
+    mysillyobject.age = age
+
+  def myfunc(abc):
+    print("Hello my name is " + abc.name)
+
+p1 = Person("John", 36)
+p1.myfunc()
