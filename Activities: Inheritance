@@ -1,0 +1,158 @@
+Activity 0
+Before beginning, create a class Noun to use as the starting point for the activities in this section. The Noun class can be anything you wish, as long as it meets the following criteria:
+
+Do not use people or animals.
+The category must be broad enough to include different examples of the category.
+It must represent a real-life object.
+Include at least three attributes that are common to most (if not all) instances of the Noun. Use appropriate naming conventions. If you created a Noun class for an earlier activity in this course, you are welcome to use it for the activities in this page, or you can create a new one.
+
+Implement the appropriate __init__ and display methods to create and display objects respectively.
+
+class Grocery:
+  item=None
+  price=None
+  status=None
+  def __init__(self,it,pr,st):
+    self.item=it
+    self.price=pr
+    self.status=st
+  def display(self):
+    print("item:", self.item)
+    print("price:", self.price)
+    print("status:", self.status)
+
+Activity 1
+Use inheritance to create another class that will inherit from the Noun class. Create two objects using the new class and display each object's information using the display method.
+As an example from this lesson, we started with an Animal class, created a Mammal class that inherits from Animal, and then created two Mammal objects. You will need to identify an appropriate class based on your own Noun class as well as appropriate objects that represent the inherited class.
+
+class Food(Grocery):
+  pass
+
+fo1=Food("strawberry",9,"stocked")
+fo1.display()
+fo2=Food("cereal",6.99,"low")
+fo2.display()
+
+Activity 2
+Add at least two attributes to the new class created in the previous activity. These attributes should be different from the attributes in the original Noun class and specific to the new class.
+As an example from the lesson, the Animal class included the attributes of name and place. The Mammal class that inherits from the Animal class would include mammal-specific attributes, such as gender and fur length.
+Override the __init__ and display methods to display the new attributes, and then create at least two new objects based on the inherited class and display them with the class attributes.
+
+class Food(Grocery):
+  brand=None
+  package_material=None
+  def display_food(self):
+    print("brand:", self.brand)
+    print("package_material:", self.package_material)
+
+fo1=Food("strawberry",9,"stocked")
+fo1.brand='Delta'
+fo1.package_material='plastic'
+fo1.display_food()
+fo2=Food("cereal",6.99,"low")
+fo2.brand='Chilil'
+fo2.package_material='cardboard'
+fo2.display_food()
+
+
+Activity 3
+Create a second and a third class that inherit from the Noun class you started with.
+Include at least three class-specific attributes for each class.
+For each of the new classes, override the __init__ and display methods to display the new attributes.
+Create at least two new objects based on the inherited class and display them with the class attributes.
+
+class Clothes(Grocery):
+  brand=None
+  package_material=None
+  def display_cloth(self):
+    print("brand:", self.brand)
+    print("package_material:", self.package_material)
+
+class Electricity(Grocery):
+  brand=None
+  package_material=None
+  def display_elect(self):
+    print("brand:", self.brand)
+    print("package_material:", self.package_material)
+
+clo1=Clothes("hoodie",28,"medium")
+clo1.brand='Holister'
+clo1.package_material='paper'
+clo1.display_cloth()
+ele1=Electricity("portable charger",38,"high")
+ele1.brand='Chilil'
+ele1.package_material='plastic and cardboard'
+ele1.display_elect()
+
+
+Activity 4
+Using the three inherited classes you have already created, use the __init__ method of the Noun class to set the values of the original attributes defined in the Noun class.
+Create two objects for each of the three inherited classes and display all attributes, including attributes from the original Noun class.
+
+
+
+fo1=Food("strawberry",9,"stocked")
+fo1.brand='Delta'
+fo1.package_material='plastic'
+fo1.display()
+fo1.display_food()
+clo1=Clothes("hoodie",28,"medium")
+clo1.brand='Holister'
+clo1.package_material='paper'
+clo1.display()
+clo1.display_cloth()
+ele1=Electricity("portable charger",38,"high")
+ele1.brand='Chilil'
+ele1.package_material='plastic and cardboard'
+ele1.display()
+ele1.display_elect()
+
+
+Activity 5
+Create a class that inherits from your initial inherited class. Include at least one attribute specific to this class.
+Create two objects based on this class and display all attributes for each object.
+As an example from the lesson, we started with an Animal class and then created a Mammal class that inherits from Animal. We could have also created additional classes that inherit from Mammal, such as Dog and Cat, which would have their own class-specific attributes.
+
+class Accessories(Clothes):
+  size=None
+  def display_acc(self):
+    print("size:", self.size)
+acc1=Accessories("t-shirt",15,"low")
+acc1.brand='American Eagle'
+acc1.package_material='plastic'
+acc1.size="small"
+acc1.display()
+acc1.display_cloth()
+acc1.display_acc()
+acc2=Accessories("socks",3,"stocked")
+acc2.brand='Forever 21'
+acc2.package_material='plastic'
+acc2.size="one-size"
+acc2.display()
+acc2.display_cloth()
+acc2.display_acc()
+
+
+Activity 6
+Create another class that inherits from the class created for the previous activity. For the new class, create at least one class-specific attribute and one object based on the class.
+Use isinstance() to verify that the new object is an instance of each of the parent classes of the new class.
+
+class Bag(Accessories):
+  material=None
+  def display_bag(self):
+    print("material:", self.material)
+ba1=Bag("hand-bag",206,"stocked")
+ba1.brand='Kate Spade'
+ba1.package_material='cardboard box'
+ba1.size="medium"
+ba1.material="leather"
+ba1.display()
+ba1.display_cloth()
+ba1.display_acc()
+ba1.display_bag()
+
+
+
+
+
+
