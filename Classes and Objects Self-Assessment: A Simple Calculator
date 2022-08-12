@@ -1,0 +1,39 @@
+Your program should include the following:
+Design a class called SimpleCalculator that performs basic math operations (addition, subtraction, multiplication, division) on two operands.
+Create a separate method for each operation in the class.
+The program should accept two values and an operator from the user, perform the selected operation using those two values, and display the result to the user in a meaningful way.
+The user should be able to exit the program at any time, using a keyword like "Quit" or "Exit" in any letter case.
+If the user chooses to exit, the program should end with an appropriate output message thanking the user.
+
+#Karly 2022-08-12
+class SimpleCalculator:
+  op=None
+  def __init__(self,met,num1,num2):
+    if met=="addition":
+      self.op=num1+num2
+  def __init__(self,met,num1,num2):
+    if met=="subtraction":
+      self.op=num1-num2
+  def __init__(self,met,num1,num2):
+    if met=="multiplication":
+      self.op=num1*num2
+  def __init__(self,met,num1,num2):
+    if met=="division":
+      self.op=num1/num2
+  def display(self):
+    print(f"result: {self.op}")
+    
+ while True:
+  n1=input("Enter a number for operation (Enter 'quit' to exit!): ").lower()
+  n2=input("Enter another number for operation (Enter 'quit' to exit!): ").lower()
+  method=input("Enter a type of operation (Enter 'addition', 'subtraction', 'multiplication', 'division' only): ").lower()
+  if n1=="quit" or n2=="quit":
+    break
+  else:
+    try:
+      n1=float(n1)
+      n2=float(n2)
+      cal=SimpleCalculator(method,n1,n2)
+      cal.display()
+    except:
+      print("Please enter numbers only for the first two input; and 'addition', 'subtraction', 'multiplication', 'division' only for the third input.")
