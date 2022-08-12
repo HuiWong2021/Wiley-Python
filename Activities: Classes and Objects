@@ -7,9 +7,9 @@ It must represent a real-life object.
 Include at least three attributes that are common to most (if not all) instances of the Noun. Use appropriate naming conventions.
 
 class Grocery:
-  item=""
-  price=""
-  quantity=""
+  item=None
+  price=None
+  quantity=None
 
 Activity 2
 Use the Noun class you created in the previous activity to create at least four different objects. Print out all attributes for each object.
