@@ -1,0 +1,121 @@
+Activity 1
+The lesson uses Person and Animal as example classes. For this activity, choose another Noun of your choice to create a class. It can be anything you wish, as long as it meets the following criteria:
+
+Do not use people or animals.
+The category must be broad enough to include different examples of the category.
+It must represent a real-life object.
+Include at least three attributes that are common to most (if not all) instances of the Noun. Use appropriate naming conventions.
+
+class Grocery:
+  item=""
+  price=""
+  quantity=""
+
+Activity 2
+Use the Noun class you created in the previous activity to create at least four different objects. Print out all attributes for each object.
+
+g1=Grocery()
+g1.item="napkin"
+g1.price=8.5
+g1.quantity=2
+print(g1.item, g1.price, g1.quantity)
+
+g2=Grocery()
+g2.item="apple"
+g2.price=0.99
+g2.quantity=10
+print(g2.item, g2.price, g2.quantity)
+
+g3=Grocery()
+g3.item="yogurt"
+g3.price=10
+g3.quantity=2
+print(g3.item, g3.price, g3.quantity)
+
+g4=Grocery()
+g4.item="bread"
+g4.price=3.99
+g4.quantity=1
+print(g4.item, g4.price, g4.quantity)
+
+Activity 3
+Create an __init__ method for your Noun class. Include at least four of the attributes you originally defined in the new method.
+class Grocery:
+  item=""
+  price=""
+  quantity=""
+  def __init__(self,it,pr,qu):
+    self.item=it
+    self.price=pr
+    self.quantity=qu
+
+g1=Grocery("napkin",8.5,2)
+g2=Grocery("apple",0.99,10)
+g3=Grocery("yogurt",10,2)
+g4=Grocery("bread",3.99,1)
+
+Activity 4
+Create a method for your Noun class. The method should perform a specific activity (or series of activities) on objects based on the class.
+Although this can be a simple display, you are encouraged to consider more complicated activities in the method.
+
+class Grocery:
+  item=None
+  price=None
+  quantity=None
+  def __init__(self,it,pr,qu):
+    self.item=it
+    self.price=pr
+    self.quantity=qu
+  def display_info(self):
+    print("item:", self.item)
+    print("price:", self.price)
+    print("quantity:", self.quantity)
+
+g1=Grocery("napkin",8.5,2)
+g1.display_info()
+g2=Grocery("apple",0.99,10)
+g2.display_info()
+g3=Grocery("yogurt",10,2)
+g3.display_info()
+g4=Grocery("bread",3.99,1)
+g4.display_info()
+
+Activity 5
+Create a separate class that is logically related to your original Noun class, based on the example that a Person can have one or more Addresses.
+Create at least one Noun object that includes a list of objects from the associated class. Display the Noun with the related objects.
+
+class Grocery:
+  item=None
+  price=None
+  quantity=None
+  def __init__(self,it,pr,qu):
+    self.item=it
+    self.price=pr
+    self.quantity=qu
+  def display(self):
+    print("item:", self.item)
+    print("price:", self.price)
+    print("quantity:", self.quantity)
+
+class Customer:
+  first_name=None
+  last_name=None
+  email=None
+  grocery=None
+  def __init__(self,fn,ln,em,gr):
+    self.first_name=fn
+    self.last_name=ln
+    self.email=em
+    self.grocery=gr
+  def display(self):
+    print("First name:", self.first_name)
+    print("Last name:", self.last_name)
+    print("email:", self.email)
+    self.grocery.display()
+
+gro=Grocery("napkin",8.5,2)
+gro.display()
+cus=Customer("Karly","Wong","kwong@gmail.com",gro)
+cus.display()
+
+
