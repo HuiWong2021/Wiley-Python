@@ -1,0 +1,95 @@
+For this assessment, you will use Python to model a computer's file system.
+Create a class called FileItem that represents any file in an operating system.
+  Research and identify attributes that are common to all files in an OS, such as permissions, owner, size, and so on.
+Create a class called CsvFile that inherits from FileItem and that represents a CSV file in an operating system.
+  Include attributes that are specific to a CSV file.
+Create a class JpgFile that inherits from FileItem and that represents a JPG file in an operating system.
+  Include attributes that are specific to a JPG file.
+Create a class Mp3File that inherits from FileItem and that represents an MP3 file in an operating system.
+  Include attributes that are specific to an MP3 file.
+
+
+Challenge
+Create a class Directory that inherits from FileItem and that represents a directory in an operating system.
+
+Create a filesystem with at least 20 objects
+Include at least three objects of each type (CsvFile, JpgFile, Mp3File, and Directory)
+Include a directory structure with a depth of at least three (directory in a directory in a directory)
+Include at least one directory that contains at least two other directories and at least two files.
+
+#Karly, 2022-08-12
+class FileItem:
+    name = None
+    permission = None
+    owner = None
+    size = None
+    create_date = None
+    def __init__(self, na, pe, ow, si, cr):
+        self.name = na
+        self.permission = pe
+        self.owner = ow
+        self.size = si
+        self.create_date = cr
+    def display(self):
+        print(self.name, self.permission, self.owner, self.size, self.create_date)
+
+class CsvFile(FileItem):
+    delimiter = None
+    def __init__(self, na, pe, ow, si, cr):
+        FileItem.__init__(self, na, pe, ow, si, cr)
+        self.delimiter = ","
+
+class JpgFile(FileItem):
+    dimension = None
+    def __init__(self, na, pe, ow, si, cr, di):
+        FileItem.__init__(self, na, pe, ow, si, cr)
+        self.dimension = di
+
+class Mp3File(FileItem):
+    duration = None
+    def __init__(self, fname, fperm, fown, fsize, fdate, du):
+        FileItem.__init__(self, na, pe, ow, si, cr)
+        self.duration = du
+
+class Directory(FileItem):
+    item = None
+    def __init__(self, na, pe, ow, si, cr):
+        FileItem.__init__(self, na, pe, ow, si, cr)
+        self.item = []
+    def display(self):
+        FileItem.display(self)
+        print(self.name)
+        for i in self.item:
+            i.display()
+    def add(self, files):
+        for i in files:
+            self.items.append(i)
+
+c1 = CsvFile("CSV1", "read, write", "SS", "100", "12/08/2022")
+c2 = CsvFile("CSV2", "read, write, execute", "SS", "100", "12/08/2022")
+c3 = CsvFile("CSV3", "read-only", "SS", "100", "12/08/2022")
+c4 = CsvFile("CSV4", "read-only", "SS", "100", "12/08/2022")
+c5 = CsvFile("CSV5", "read, write", "SS", "100", "12/08/2022")
+j1 = JpgFile("Jpg1", "read-only", "SS", "100", "12/08/2022", "1920x1080")
+j2 = JpgFile("Jpg2", "read, write", "SS", "100", "12/08/2022", "1920x1080")
+j3 = JpgFile("Jpg3", "read-only", "SS", "100", "12/08/2022", "1920x1080")
+j4 = JpgFile("Jpg4", "read, write", "SS", "100", "12/08/2022", "1920x1080")
+j5 = JpgFile("Jpg5", "read-only", "SS", "100", "12/08/2022", "1920x1080")
+m1 = Mp3File("Mp31", "read, write", "SS", "100", "12/08/2022", "1min 12sec")
+m2 = Mp3File("Mp32", "read-only", "SS", "100", "12/08/2022", "2min 20sec")
+m3 = Mp3File("Mp33", "read-only", "SS", "100", "12/08/2022", "28sec")
+m4 = Mp3File("Mp34", "read-only", "SS", "100", "12/08/2022", "3min 23sec")
+m5 = Mp3File("Mp35", "read, write", "SS", "100", "12/08/2022", "1min 02sec")
+
+d1 = Directory("Dir1", "read,write", "SS", "100", "12/08/2022")
+d2 = Directory("Dir2", "read,write", "SS", "100", "12/08/2022")
+d3 = Directory("Dir3", "read,write,execute", "SS", "100", "12/08/2022")
+d4 = Directory("Dir4", "read,write", "SS", "100", "12/08/2022")
+d5 = Directory("Dir5", "read,write", "SS", "100", "12/08/2022")
+
+d5.add([c1, j1, m1])
+d4.add([c2, j2, m2])
+d3.add([c3, j3, m3, d4, d5])
+d2.add([c4, j4, m4, d3])
+d1.add([c5, j5, m5, d2])
+d1.display()
